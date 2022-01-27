@@ -8,16 +8,22 @@
 <% end %>
 
 <%= form_with(model: @article, local: true) do |f| %>
-  <p>
-    <%= f.label :title%>
-    <%= f.text_field :title%>
-  </p>
-  <p>
-    <%= f.label :description%>
-    <%= f.text_area :description%>
-  </p>
+  <div class="form-group row">
+    <%= f.label :title, class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= f.text_field :title%>
+    </div>
+  </div>
+    <div class="form-group row">
+      <%= f.label :description, class: "col-2 col-form-label" %>
+      <div class="col-10">
+        <%= f.text_area :description, rows: 10, sclass: "form-control"%>
+      </div>
+    </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+    <div class="form-group row">
+      <%= f.submit class: "btn btn-outline-dark btn-lg" %>
+    </div>
+
+    <%= link_to 'Return to articles listing', articles_path %></p>
+  <% end %>

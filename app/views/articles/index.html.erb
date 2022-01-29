@@ -1,7 +1,6 @@
-<div id="page-content">
-  <h1 class="text-center mt-4"> Listing all Articles</h1>
+<h1 class="text-center mt-4"> Listing all Articles</h1>
 
-  <div class="container">
+<div class="container">
     <% @articles.each do |article| %>
       <div class="row justify-content-md-center">
         <div class="col-8 mt-4">
@@ -13,7 +12,7 @@
               <h5 class="card-title"><td><%= link_to article.title, article_path(article), class: "text-success" %></td></h5>
               <p class="card-text"><%= truncate(article.description, length: 100) %></p>
               <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
-              <%= link_to "View", edit_article_path(article), class: "btn btn-outline-info" %>
+              <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
               <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?'} %>
             </div>
             <div class="card-footer text-muted">
@@ -25,4 +24,3 @@
       </div>
     <% end %>
   </div>
-</div>

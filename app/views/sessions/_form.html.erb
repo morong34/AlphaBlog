@@ -1,15 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10">
-      <%= render 'shared/error', obj: @user %>
-      <%= form_with(model: @user, local: true, class: "shadow p-3 mb-4 bg-info rounded") do |f| %>
-        <div class="form-group row mt-2">
-          <%= f.label :username, class: "col-2 col-form-label text-light" %>
-          <div class="col-10">
-            <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "Username of the User" %>
-          </div>
-        </div>
-
+      <%= form_with(scope: :sessions, url: login_path, class: "shadow p-3 mb-4 bg-info rounded") do |f| %>
         <div class="form-group row mt-2">
           <%= f.label :email, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
@@ -25,10 +17,9 @@
         </div>
 
         <div class="form-group row mt-2 col-sm-2 justify-content-center">
-          <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: "btn btn-outline-dark") %>
+          <%= f.submit "Login", class: "btn btn-outline-dark" %>
         </div>
       <% end %>
     </div>
-    <%# <%= link_to '[ Return to articles listing ]', articles_path%>
   </div> 
 </div>

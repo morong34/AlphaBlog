@@ -1,8 +1,9 @@
- <% if @article.errors.any? %>
+ <% if obj.errors.any? %>
   <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
     <div>
       <ul>
-        <% @article.errors.full_messages.each do |msg| %>
+        <% obj.errors.full_messages.each do |msg| %>
+          <p>The following error has occurred:</p>
           <li><%= msg %></li>
         <% end %>
       </ul>

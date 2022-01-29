@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-10">
-      <%= render 'shared/error' %>
+      <%= render 'shared/error', obj: @article %>
       <%= form_with(model: @article, local: true, class: "shadow p-3 mb-4 bg-info rounded") do |f| %>
         <div class="form-group row">
           <%= f.label :title, class: "col-2 col-form-label text-light" %>

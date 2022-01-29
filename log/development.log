@@ -12469,3 +12469,111 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.4ms | Allocations: 11319)
 
 
+Started GET "/users/1" for ::1 at 2022-01-29 22:43:08 +0200
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:46:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:14
+  Rendered articles/_article.html.erb (Duration: 6.6ms | Allocations: 1720)
+  Rendered users/show.html.erb within layouts/application (Duration: 35.3ms | Allocations: 6880)
+  Rendered layout layouts/application.html.erb (Duration: 35.5ms | Allocations: 6979)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 1.3ms | Allocations: 20686)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container">
+    <% @articles.each do |article| %>
+      <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+          <div class="card text-center shadow p-2 mb-5 bg-white rounded">
+            <div class="card-header font-italic">
+              <% if article.user %>
+                by <%= link_to article.user.username, user_path(article.user) %>
+              <% end %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><td><%= link_to article.title, article_path(article), class: "text-success" %></td></h5>
+              <p class="card-text"><%= truncate(article.description, length: 100) %></p>
+              <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
+              <%# <% if logged_in? && article.user == current_user %>
+                <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
+                <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?'} %>
+              <% end %>
+            </div>
+            <div class="card-footer text-muted">
+              <small>Created about <%= time_ago_in_words(article.created_at) %> ago,
+              edited about <%= time_ago_in_words(article.updated_at) %> ago </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+):
+1:    <div class="container">
+2:        <% @articles.each do |article| %>
+3:          <div class="row justify-content-md-center">
+4:            <div class="col-8 mt-4">
+5:              <div class="card text-center shadow p-2 mb-5 bg-white rounded">
+6:                <div class="card-header font-italic">
+7:                  <% if article.user %>
+8:                    by <%= link_to article.user.username, user_path(article.user) %>
+9:                  <% end %>
+10:                </div>
+11:                <div class="card-body">
+12:                  <h5 class="card-title"><td><%= link_to article.title, article_path(article), class: "text-success" %></td></h5>
+13:                  <p class="card-text"><%= truncate(article.description, length: 100) %></p>
+14:                  <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
+15:                  <%# <% if logged_in? && article.user == current_user %>
+16:                    <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
+17:                    <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?'} %>
+18:                  <% end %>
+19:                </div>
+20:                <div class="card-footer text-muted">
+21:                  <small>Created about <%= time_ago_in_words(article.created_at) %> ago,
+22:                  edited about <%= time_ago_in_words(article.updated_at) %> ago </small>
+23:                </div>
+24:              </div>
+25:            </div>
+26:          </div>
+27:        <% end %>
+28:      </div>
+  
+app/views/articles/_article.html.erb:30: syntax error, unexpected end, expecting end-of-input
+app/views/articles/_article.html.erb:30: syntax error, unexpected end, expecting end-of-input
+app/views/articles/_article.html.erb:30: syntax error, unexpected end, expecting end-of-input
+app/views/articles/_article.html.erb:30: syntax error, unexpected end, expecting end-of-input
+app/views/articles/_article.html.erb:30: syntax error, unexpected end, expecting end-of-input
+app/views/articles/_article.html.erb:30: syntax error, unexpected end, expecting end-of-input
+app/views/users/show.html.erb:16
+Started GET "/users/1" for ::1 at 2022-01-29 22:43:44 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:46:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" WHERE "articles"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:14
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 4], ["OFFSET", 0]]
+  ↳ app/views/articles/_article.html.erb:2
+  Rendered articles/_article.html.erb (Duration: 16.5ms | Allocations: 8389)
+  Rendered users/show.html.erb within layouts/application (Duration: 21.7ms | Allocations: 10984)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.erb (Duration: 1.1ms | Allocations: 601)
+  Rendered layouts/_messages.html.erb (Duration: 0.7ms | Allocations: 205)
+  Rendered layouts/_footer.html.erb (Duration: 0.6ms | Allocations: 126)
+  Rendered layout layouts/application.html.erb (Duration: 139.4ms | Allocations: 29332)
+Completed 200 OK in 144ms (Views: 140.3ms | ActiveRecord: 0.8ms | Allocations: 31429)
+
+

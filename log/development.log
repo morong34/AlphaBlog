@@ -23756,3 +23756,93 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 38ms (Views: 36.1ms | ActiveRecord: 1.1ms | Allocations: 21828)
 
 
+Started GET "/categories/new" for ::1 at 2022-01-30 14:25:17 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CategoriesController#new as HTML
+Completed 404 Not Found in 18ms (ActiveRecord: 0.3ms | Allocations: 4299)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Category without an ID):
+  
+app/controllers/categories_controller.rb:51:in `set_category'
+app/controllers/categories_controller.rb:55:in `require_admin'
+Started GET "/categories/new" for ::1 at 2022-01-30 14:26:57 +0200
+Processing by CategoriesController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/new.html.erb within layouts/application
+  Rendered shared/_error.html.erb (Duration: 0.7ms | Allocations: 220)
+  Rendered categories/_form.html.erb (Duration: 11.3ms | Allocations: 3335)
+  Rendered categories/new.html.erb within layouts/application (Duration: 12.5ms | Allocations: 3652)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.erb (Duration: 1.2ms | Allocations: 970)
+  Rendered layouts/_messages.html.erb (Duration: 0.6ms | Allocations: 230)
+  Rendered layouts/_footer.html.erb (Duration: 0.5ms | Allocations: 126)
+  Rendered layout layouts/application.html.erb (Duration: 143.4ms | Allocations: 22876)
+Completed 200 OK in 165ms (Views: 145.0ms | ActiveRecord: 1.4ms | Allocations: 35282)
+
+
+Started GET "/categories/new" for ::1 at 2022-01-30 14:27:57 +0200
+Processing by CategoriesController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/new.html.erb within layouts/application
+  Rendered shared/_error.html.erb (Duration: 0.3ms | Allocations: 214)
+  Rendered categories/_form.html.erb (Duration: 2.3ms | Allocations: 1366)
+  Rendered categories/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1681)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.erb (Duration: 1.2ms | Allocations: 921)
+  Rendered layouts/_messages.html.erb (Duration: 0.3ms | Allocations: 217)
+  Rendered layouts/_footer.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 8154)
+Completed 200 OK in 30ms (Views: 13.5ms | ActiveRecord: 1.3ms | Allocations: 19803)
+
+
+Started POST "/categories" for ::1 at 2022-01-30 14:28:22 +0200
+Processing by CategoriesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "category"=>{"name"=>"SocialMedia", "description"=>"Acest categori va contine doar articole despre social media"}, "commit"=>"Create category"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/categories_controller.rb:11:in `create'
+  [1m[36mCategory Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? LIMIT ?[0m  [["name", "SocialMedia"], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:11:in `create'
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at", "description") VALUES (?, ?, ?, ?)[0m  [["name", "SocialMedia"], ["created_at", "2022-01-30 12:28:22.196758"], ["updated_at", "2022-01-30 12:28:22.196758"], ["description", "Acest categori va contine doar articole despre social media"]]
+  ↳ app/controllers/categories_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/categories_controller.rb:11:in `create'
+Redirected to http://localhost:3000/categories/4
+Completed 302 Found in 10ms (ActiveRecord: 2.2ms | Allocations: 4362)
+
+
+Started GET "/categories/4" for ::1 at 2022-01-30 14:28:22 +0200
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:51:in `set_category'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles" INNER JOIN "article_categories" ON "articles"."id" = "article_categories"."article_id" WHERE "article_categories"."category_id" = ?[0m  [["category_id", 4]]
+  ↳ app/views/categories/show.html.erb:15
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" INNER JOIN "article_categories" ON "articles"."id" = "article_categories"."article_id" WHERE "article_categories"."category_id" = ? LIMIT ? OFFSET ?[0m  [["category_id", 4], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/articles/_article.html.erb:2
+  Rendered articles/_article.html.erb (Duration: 2.6ms | Allocations: 1186)
+  Rendered categories/show.html.erb within layouts/application (Duration: 9.2ms | Allocations: 4268)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navigation.html.erb (Duration: 0.5ms | Allocations: 385)
+  Rendered layouts/_messages.html.erb (Duration: 0.1ms | Allocations: 57)
+  Rendered layouts/_footer.html.erb (Duration: 0.0ms | Allocations: 40)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 9275)
+Completed 200 OK in 35ms (Views: 15.5ms | ActiveRecord: 1.3ms | Allocations: 17831)
+
+

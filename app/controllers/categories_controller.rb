@@ -52,11 +52,9 @@ class CategoriesController < ApplicationController
   end
 
   def require_admin
-    set_category
     if !current_user.admin?
       flash[:alert] = "You do not have the right to edit or to delete this category"
-      byebug
-      redirect_to @category
+      redirect_to category_path
     end
   end
 

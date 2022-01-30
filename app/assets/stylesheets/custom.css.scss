@@ -18,8 +18,7 @@
  }
 
  #home-container {
-  //  height: 89vh;
-   background-image: asset-url('back-image.jpg');
+
    background-position: center center;
    background-repeat: no-repeat;
    background-size: cover;
@@ -27,7 +26,10 @@
  }
 
  #home-window{
-  // height: 75vh;
+  background-image: asset-url('back-image.jpg');
+  background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
  }
 
  html,
@@ -37,7 +39,7 @@
 
  #page-content {
    flex: 1 0 auto;
-   background-color: lightgray;
+   background-color: paleturquoise;
  }
 
  #sticky-footer {

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <%= render 'shared/error', obj: @category %>
+      <%= form_with(model: @category, local: true, class: "shadow p-3 mb-4 bg-info rounded") do |f| %>
+        <div class="form-group row mt-2">
+          <%= f.label :name, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :name, class: "form-control shadow rounded", placeholder: "Name of the Categorie" %>
+          </div>
+        </div>
+
+        <div class="form-group row mt-2">
+          <%= f.label :description, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_area :description, rows: 7, class: "form-control shadow rounded", placeholder: "Description of the categories" %>
+          </div>
+        </div>
+
+        <div class="form-group row mt-2 col-sm-2 justify-content-center">
+          <%= f.submit(@category.new_record? ? "Create category" : "Update Category", class: "btn btn-outline-dark") %>
+        </div>
+      <% end %>
+    </div>
+    <%# <%= link_to '[ Return to articles listing ]', articles_path%>
+  </div> 
+</div>

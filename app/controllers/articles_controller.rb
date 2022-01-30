@@ -8,6 +8,15 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 4)
+
+    if params[:search_by_title]
+      @articles = @articles.where("title like ?", 
+      "%# {params[:search_by_title]}%")
+      if @articles.empty?
+        redirect_to articles_path
+        flash[:notice] = "Don't exist"
+      end
+    end
   end 
 
   def new
@@ -49,7 +58,7 @@ class ArticlesController < ApplicationController
   end
 
   def articles_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 
   def require_same_user

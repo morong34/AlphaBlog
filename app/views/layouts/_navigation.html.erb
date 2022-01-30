@@ -21,6 +21,15 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "Create new Category", new_category_path, class: "dropdown-item" %>
+                <%= link_to "View Categories", categories_path, class: "dropdown-item" %>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <%= "(Admin)" if current_user.admin? %> Profile [<%= current_user.username%>]
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -53,10 +62,12 @@
               </li>
             <% end %>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          // The search bar doesnt work
+          <form class="d-flex navbar-form navbar-left" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search for articles..." aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
+
         </div>
       </div>
 </nav>

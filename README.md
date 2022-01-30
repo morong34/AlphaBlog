@@ -1,2 +1,5 @@
 # AlphaBlog
-Alpha Blog application, learn from Udemy
+This is a application build with: 
+  - Ruby
+  - Ruby on Rails
+  - Bootstras
